@@ -1,4 +1,4 @@
-
+// dotenv before deployment 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('artists', function(table){
     table.increments();
