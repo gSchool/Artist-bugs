@@ -2,7 +2,6 @@ extends ../layout
 
 block content 
   h1 Edit your artist 
-  
   form(action='/artists/#{artist.id}' method='post')
     div.artist
       label(for="artist") Artist Name 

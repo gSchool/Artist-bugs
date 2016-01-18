@@ -1,6 +1,3 @@
-// "main": "app.js",
-// 
-
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
@@ -27,26 +24,30 @@ router.post('/artists', function(req,res,next){
 });
 
 router.get('/artists/:id', function(req,res,next){
-  artists().where('id', req.params.id).first().then(function(artist){
-    res.render('artists/show', {artists: artist} );
+  var artist_id = parseInt(req.params.id);
+  artists().where('id', artist_id).first().then(function(artist){
+    res.render('artists/show', {artist: artist} );
   });
 });
 
 
 router.get('/artists/:id/edit', function(req, res, next) {
-  artists().where('id', req.params.id).first().then(function (artist) {
-    res.render('/artists/edit', {artist: artist});
+  var artist_id = parseInt(req.params.id);
+  artists().where('id', artist_id).first().then(function(artist) {
+    res.render('artists/edit', {artist: artist});
   });
 });
 
 router.post('/artists/:id', function (req, res, next) {
-  artists().where('id', req.params.id).update(req.body).then(function (artist) {
-    res.redirect('/artists');
+  var artist_id = parseInt(req.params.id);
+  artists().where('id', artist_id).update(req.body).then(function(artist) {
+    res.redirect('/artists', {artist: artist});
   });
 });
 
 router.post('/artists/:id/delete', function (req, res, next) {
-  artists().where('id', req.params.id).del().then(function (artist) {
+  var artist_id = parseInt(req.params.id);
+  artists().where('id', artist_id).del().then(function (artist) {
     res.redirect('/artists');
   });
 });

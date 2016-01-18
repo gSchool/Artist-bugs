@@ -1,10 +1,10 @@
 extends ../layout 
 
 block content 
-  if artists
+  if artist
     h1= artist.name 
     p 
-    h4= artist.painting
+    h3= artist.painting
     h4 Artist Media: #{artist.medium} 
     
     p= artist.description 
