@@ -1,6 +1,32 @@
 extends ../layout 
 
 block content 
-  h1 Edit Page 
+  h1 Edit your artist 
   
-  
+  form(action='/artists/#{artist.id}' method='post')
+    div.artist
+      label(for="artist") Artist Name 
+      input(type = 'text', value= artist.name, id="artist", name = "artist")
+      p
+    div.painting
+      label(for="painting") Artwork Name 
+      input(type = 'text', value= artist.painting , id="painting", name = "painting")
+      p
+    div.medium
+      label(for="medium") Artistic Media: 
+      p
+      select(id='medium', name='medium', type='medium')
+        option(value="acrylic") Acrylic
+        option(value="oil") Oil 
+        option(value='chalk') Chalk 
+        option(value='pastel') Pastel 
+        option(value='watercolor') Watercolor 
+        option(value='ink') Ink 
+      p
+    div.description
+      label(for='description') Description of Artwork
+      p
+      textarea(id='description' name='description' value=artist.description rows='7' cols='50') 
+      p
+    div.submit
+      input(type='submit' id='submit' name='submit' value='Submit Artist')

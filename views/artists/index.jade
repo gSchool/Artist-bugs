@@ -1,6 +1,22 @@
 extends ../layout 
 
 block content 
-  h1 Hello World 
-
-  a(href = 'artists/new') New Artist 
+  h1 Showing the artists
+  a(href = '/artists/new') New Artist 
+  if artists
+    table 
+      thead 
+        tr 
+          th Artist 
+          th Painting 
+          th Medium 
+          th Description 
+      tbody 
+        for artist in artists 
+          tr 
+            td=artist.name
+            td 
+              a(href='/artists/show')=artist.painting
+            td=artist.medium 
+            td=artist.description
+  

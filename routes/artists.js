@@ -1,43 +1,55 @@
-// BUGS
-// 1. req,res,next -> res,req,next for one of the routes
-// 2. change order of something in app.js
-// 3. something with database or knex
+// "main": "app.js",
+// 
+
 var express = require('express');
 var router = express.Router();
+var knex = require('../db/knex');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('artists/index');
+function artists() {
+  return knex('artists');
+};
+
+// ROUTES
+router.get('/artists', function(req,res,next){
+  artists().select().then(function(results){
+    res.render('artists/index', {artists: results});
+  });
 });
 
-// GET new form
-router.get('/new', function(req,res,next){
+router.get('/artists/new', function(req,res,next){
   res.render('artists/new');
 });
 
-// POST new info
-router.post('', function(req,res,next){
-  res.redirect('');
+router.post('/artists', function(req,res,next){
+  artists().insert(req.body).then(function(result){
+    res.redirect('/artists');
+  });
 });
 
-//GET one listing
-router.get('', function(req,res,next){
-  res.render('');
+router.get('/artists/:id', function(req,res,next){
+  artists().where('id', req.params.id).first().then(function(artist){
+    res.render('artists/show', {artists: artist} );
+  });
 });
 
-//GET edit form
-router.get('', function(req,res,next){
-  res.render('');
+
+router.get('/artists/:id/edit', function(req, res, next) {
+  artists().where('id', req.params.id).first().then(function (artist) {
+    res.render('/artists/edit', {artist: artist});
+  });
 });
 
-//POST edits
-router.post('', function(req,res, next){
-  res.redirect('');
+router.post('/artists/:id', function (req, res, next) {
+  artists().where('id', req.params.id).update(req.body).then(function (artist) {
+    res.redirect('/artists');
+  });
 });
 
-//POST delete listing
-router.post('', function(req,res,next){
-
+router.post('/artists/:id/delete', function (req, res, next) {
+  artists().where('id', req.params.id).del().then(function (artist) {
+    res.redirect('/artists');
+  });
 });
+
 
 module.exports = router;
