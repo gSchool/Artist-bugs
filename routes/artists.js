@@ -3,7 +3,15 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('artists/index');
 });
+
+// GET new form 
+// POST new info
+
+//GET one listing
+//GET edit form
+//POST edits
+//POST delete listing
 
 module.exports = router;
