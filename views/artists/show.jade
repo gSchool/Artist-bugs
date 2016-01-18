@@ -1,4 +1,14 @@
 extends ../layout 
 
 block content 
-  h1 Show Page 
+  if artists
+    h1= artist.name 
+    p 
+    h4= artist.painting
+    h4 Artist Media: #{artist.medium} 
+    
+    p= artist.description 
+    p 
+    a(href='/artists/#{artist.id}/edit') Edit 
+    form(action='/artists/#{artist.id}/delete' method='post')
+      input(type='submit' value='Delete')
