@@ -5,7 +5,7 @@ block content
   form(action='/artists/#{artist.id}' method='post')
     div.artist
       label(for="artist") Artist Name 
-      input(type = 'text', value= artist.name, id="artist", name = "artist")
+      input(type = 'text', value= artist.name, id="artist", name = "name")
       p
     div.painting
       label(for="painting") Artwork Name 
@@ -28,4 +28,4 @@ block content
       textarea(id='description' name='description' value=artist.description rows='7' cols='50') 
       p
     div.submit
-      input(type='submit' id='submit' name='submit' value='Submit Artist')
+      input(type='submit' id='submit' value='Submit Artist')
