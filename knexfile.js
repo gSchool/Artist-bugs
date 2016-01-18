@@ -1,5 +1,5 @@
 // Update with your config settings.
-//comment 
+//comment
 module.exports = {
   development: {
     client: 'pg',
