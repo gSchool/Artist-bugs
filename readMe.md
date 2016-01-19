@@ -1,5 +1,5 @@
 # Find the Bugs
 
+Found the bugs.
 
-
-__Ignore bugs-3 __!!
+Solved branches 1, 2, 4, 5.
