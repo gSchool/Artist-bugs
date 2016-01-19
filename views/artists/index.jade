@@ -2,7 +2,7 @@ extends ../layout
 
 block content 
   h1 Showing the artists
-  a(href = '/artists/new') New Artist 
+  a(href= '/artists/new') New Artist 
   if artists
     table 
       thead 
@@ -16,7 +16,7 @@ block content
           tr 
             td=artist.name
             td 
-              a(href='/artists/#{artist.id}')=artist.painting
+              a(href='/artists/'+artist.id)=artist.painting
             td=artist.medium 
             td=artist.description
   
