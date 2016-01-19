@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var media = require('../files/media');
 
 function artists() {
   return knex('artists');
@@ -14,7 +15,7 @@ router.get('/artists', function(req,res,next){
 });
 
 router.get('/artists/new', function(req,res,next){
-  res.render('artists/new');
+  res.render('artists/new', {media: media});
 });
 
 router.post('/artists', function(req,res,next){
@@ -34,7 +35,7 @@ router.get('/artists/:id', function(req,res,next){
 router.get('/artists/:id/edit', function(req, res, next) {
   var artist_id = parseInt(req.params.id);
   artists().where('id', artist_id).first().then(function(artist) {
-    res.render('artists/edit', {artist: artist});
+    res.render('artists/edit', {artist: artist, media: media});
   });
 });
 
