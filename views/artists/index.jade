@@ -14,9 +14,9 @@ block content
       tbody 
         for artist in artists 
           tr 
-            td=artist.name
+            td artist.name
             td 
-              a(href='/artists/show')=artist.painting
-            td=artist.medium 
-            td=artist.description
+              a(href='/artists/show') artist.painting
+            td artist.medium 
+            td artist.description
   
