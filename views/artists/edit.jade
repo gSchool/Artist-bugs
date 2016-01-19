@@ -14,13 +14,13 @@ block content
     div.medium
       label(for="medium") Artistic Media: 
       p
-      select(id='medium', name='medium', type='medium')
-        option(value="acrylic") Acrylic
-        option(value="oil") Oil 
-        option(value='chalk') Chalk 
-        option(value='pastel') Pastel 
-        option(value='watercolor') Watercolor 
-        option(value='ink') Ink 
+      select(id='medium', name='medium')
+        option(selected= (artist.medium === 'acrylic' ? true : undefined) value="acrylic") Acrylic
+        option(selected= (artist.medium === 'oil' ? true : undefined) value="oil") Oil 
+        option(selected= (artist.medium === 'chalk' ? true : undefined) value='chalk') Chalk 
+        option(selected= (artist.medium === 'pastel' ? true : undefined) value='pastel') Pastel 
+        option(selected= (artist.medium === 'watercolor' ? true : undefined) value='watercolor') Watercolor 
+        option(selected= (artist.medium === 'ink' ? true : undefined) value='ink') Ink 
       p
     div.description
       label(for='description') Description of Artwork
