@@ -4,8 +4,8 @@ block content
   h1 Edit your artist 
   form(action='/artists/#{artist.id}' method='post')
     div.artist
-      label(for="artist") Artist Name 
-      input(type = 'text', value= artist.name, id="artist", name = "artist")
+      label(for="name") Artist Name 
+      input(type = 'text', value= artist.name, id="name", name = "name")
       p
     div.painting
       label(for="painting") Artwork Name 
@@ -28,7 +28,8 @@ block content
       textarea(id='description' name='description' value=artist.description rows='7' cols='50') #{artist.description}
       p
     div.submit
-      input(type='submit' value='Submit Artist')
+      form(action='/artists/'+ artist.id method='POST')
+        input(type='submit' value='Submit Artist')
 
 
 //- checked=(book ? (book.rating === 1 ? true : undefined): undefined))

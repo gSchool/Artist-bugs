@@ -36,26 +36,24 @@ router.get('/artists/:artist_id', function(req,res,next){
 });
 
 
-router.get('/artists/:id/edit', function(req, res, next) {
-  var artist_id = parseInt(req.params.id);
-  artists().where('id', artist_id).first().then(function(artist) {
+router.get('/artists/:artist_id/edit', function(req, res, next) {
+  artists().where('id', req.params.artist_id).first().then(function(artist) {
     res.render('artists/edit', {artist: artist});
   });
 });
 
-router.post('/artists/:id', function (req, res, next) {
-  var artist_id = parseInt(req.params.id);
-  artists().where('id', artist_id).update(req.body).then(function(artist) {
-    res.redirect('/artists', {artist: artist});
+router.post('/artists/:artist_id', function (req, res, next) {
+  artists().where('id', req.params.artist_id).update(req.body).then(function(artist) {
+    res.redirect('/artists');
   });
 });
 
-// router.post('/artists/:id/delete', function (req, res, next) {
-//   var artist_id = parseInt(req.params.id);
-//   artists().where('id', artist_id).del().then(function (artist) {
-//     res.redirect('/artists');
-//   });
-// });
+router.post('/artists/:id/delete', function (req, res, next) {
+  var artist_id = parseInt(req.params.id);
+  artists().where('id', artist_id).del().then(function (artist) {
+    res.redirect('/artists');
+  });
+});
 
 
 module.exports = router;
