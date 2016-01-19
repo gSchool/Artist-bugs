@@ -9,6 +9,6 @@ block content
     
     p= artist.description 
     p 
-    a(href='/artists/#{artist.id}/edit') Edit 
-    form(action='/artists/#{artist.id}/delete' method='post')
-      input(type='submit' value='Delete')
+      a(href='/artists/' + artist.id + '/edit') Edit 
+      form(action='/artists/'+artist.id+'/delete' method='post')
+        input(type='submit' value='Delete')
