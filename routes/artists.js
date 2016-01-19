@@ -27,7 +27,7 @@ router.post('/artists', function(req,res,next){
 
 router.get('/artists/:id', function(req,res,next){
   artists().where('id', req.params.id).first().then(function(artist){
-    res.render('artists/show', {artists: artist} );
+    res.render('artists/show', {artist: artist} );
   });
 });
 
