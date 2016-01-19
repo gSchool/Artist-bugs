@@ -38,9 +38,8 @@ router.get('/artists/:id/edit', function(req, res, next) {
 });
 
 router.post('/artists/:id', function (req, res, next) {
-  var artist_id = parseInt(req.params.id);
-  Artists().where('id', artist_id).update(req.body).then(function(artist) {
-    res.redirect('/artists', {artist: artist});
+  Artists().where('id', req.params.id).update(req.body).then(function(artist) {
+    res.redirect('/artists');
   });
 });
 
