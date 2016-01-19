@@ -6,22 +6,22 @@ block content
   form(action='/artists' method='post')
     div.artist
       label(for="name") Artist Name 
-      input(type= 'text' placeholder=Artist Name, id='name' name= "name")
+      input(type= 'text' placeholder='Artist Name' id= "name" name= "name")
       p
     div.painting
       label(for="painting") Artwork Name 
       input(type= 'text' placeholder='Painting Name' id="painting" name= "painting")
       p
     div.medium
-      label(for="medium") Artistic Media: 
+      label(for= "medium") Artistic Media: 
       p
       select(id='medium' name='medium' type='medium')
-        option(value="acrylic")Acrylic
-        option(value="oil")Oil 
-        option(value='chalk')Chalk 
-        option(value='pastel')Pastel 
-        option(value='watercolor')Watercolor 
-        option(value='ink')Ink 
+        option(value="acrylic") Acrylic
+        option(value="oil") Oil 
+        option(value='chalk') Chalk 
+        option(value='pastel') Pastel 
+        option(value='watercolor') Watercolor 
+        option(value='ink') Ink 
       p
     div.description
       label(for='description') Description of Artwork
@@ -29,7 +29,8 @@ block content
       textarea(id='description' name='description' placeholder='Describe the masterpiece..' rows='7' cols='50') 
       p
     div.submit
-      input(type='submit' id='submit' value='Submit Artist')
+      form(action='/artists' method="post")
+        input(type='submit' id='submit' value='Submit Artist')
       
       
       
