@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -16,7 +16,7 @@
     "pg": "^4.4.3",
     "serve-favicon": "~2.3.0"
   },
-  "main": "app.js", 
+  "main":"bin/www" ,
   "devDependencies": {},
   "author": "",
   "license": "ISC",
