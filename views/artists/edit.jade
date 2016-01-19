@@ -2,11 +2,10 @@ extends ../layout
 
 block content 
   h1 Edit your artist 
-  
   form(action='/artists/#{artist.id}' method='post')
     div.artist
       label(for="artist") Artist Name 
-      input(type = 'text', value= artist.name, id="artist", name = "artist")
+      input(type = 'text', value= artist.name, id="artist", name = "name")
       p
     div.painting
       label(for="painting") Artwork Name 
@@ -15,18 +14,18 @@ block content
     div.medium
       label(for="medium") Artistic Media: 
       p
-      select(id='medium', name='medium', type='medium')
-        option(value="acrylic") Acrylic
-        option(value="oil") Oil 
-        option(value='chalk') Chalk 
-        option(value='pastel') Pastel 
-        option(value='watercolor') Watercolor 
-        option(value='ink') Ink 
+      select(id='medium', name='medium')
+        option(selected= (artist.medium === 'acrylic' ? true : undefined) value="acrylic") Acrylic
+        option(selected= (artist.medium === 'oil' ? true : undefined) value="oil") Oil 
+        option(selected= (artist.medium === 'chalk' ? true : undefined) value='chalk') Chalk 
+        option(selected= (artist.medium === 'pastel' ? true : undefined) value='pastel') Pastel 
+        option(selected= (artist.medium === 'watercolor' ? true : undefined) value='watercolor') Watercolor 
+        option(selected= (artist.medium === 'ink' ? true : undefined) value='ink') Ink 
       p
     div.description
       label(for='description') Description of Artwork
       p
-      textarea(id='description' name='description' value=artist.description rows='7' cols='50') 
+      textarea(id='description' name='description' rows='7' cols='50') #{artist.description}
       p
     div.submit
-      input(type='submit' id='submit' name='submit' value='Submit Artist')
+      input(type='submit' id='submit' value='Submit Artist')
