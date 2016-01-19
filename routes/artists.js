@@ -18,18 +18,22 @@ router.get('/artists/new', function(req,res,next){
 });
 
 router.post('/artists', function(req,res,next){
-  artists().insert(req.body).then(function(result){
+  var items = {
+    name: req.body.name,
+    painting: req.body.painting,
+    medium: req.body.medium,
+    description: req.body.description,
+  }
+  artists().insert(items).then(function(artist){
     res.redirect('/artists');
   });
 });
 
-router.get('/artists/:id', function(res,req,next){
-  var artist_id = parseInt(req.params.id);
-  artists().where('id', artist_id).first().then(function(artist){
+router.get('/artists/:artist_id', function(req,res,next){
+  artists().where('id', req.params.artist_id).first().then(function(artist){
     res.render('artists/show', {artist: artist} );
   });
 });
-
 
 router.get('/artists/:id/edit', function(req, res, next) {
   var artist_id = parseInt(req.params.id);
