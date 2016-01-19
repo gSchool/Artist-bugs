@@ -34,7 +34,7 @@ router.get('/artists/:id', function(req,res,next){
 
 router.get('/artists/:id/edit', function(req, res, next) {
   artists().where('id', req.params.id).first().then(function (artist) {
-    res.render('/artists/edit', {artist: artist});
+    res.render('artists/edit', {artist: artist});
   });
 });
 
