@@ -3,30 +3,31 @@ extends ../layout
 block content 
   h1 Edit your artist 
   
-  form(action='/artists/#{artist.id}' method='post')
+  form(action='/artists/'+artist.id method='post')
     div.artist
       label(for="name") Artist Name 
-      input(type = 'text', value= artist.name, id="name", name = "name")
+      input(type = 'text' value= artist.name id="name" name = "name")
       p
     div.painting
       label(for="painting") Artwork Name 
-      input(type = 'text', value= artist.painting , id="painting", name = "painting")
+      input(type = 'text' value= artist.painting id="painting" name = "painting")
       p
     div.medium
       label(for="medium") Artistic Media: 
       p
-      select(id='medium', name='medium', type='medium')
-        option(value="acrylic") Acrylic
-        option(value="oil") Oil 
-        option(value='chalk') Chalk 
-        option(value='pastel') Pastel 
-        option(value='watercolor') Watercolor 
-        option(value='ink') Ink 
+      select(id='medium' name='medium' type='medium')
+        option(value="acrylic" selected=(artist ? (artist.medium === 'acrylic' ? true : undefined): undefined)) Acrylic
+        option(value="oil" selected=(artist ? (artist.medium === 'oil' ? true : undefined): undefined)) Oil 
+        option(value='chalk' selected=(artist ? (artist.medium === 'chalk' ? true : undefined): undefined)) Chalk 
+        option(value='pastel' selected=(artist ? (artist.medium === 'pastel' ? true : undefined): undefined)) Pastel 
+        option(value='watercolor' selected=(artist ? (artist.medium === 'watercolor' ? true : undefined): undefined)) Watercolor
+        option(value='ink' selected=(artist ? (artist.medium === 'ink' ? true : undefined): undefined)) Ink 
       p
     div.description
       label(for='description') Description of Artwork
       p
-      textarea(id='description' name='description' value=artist.description rows='7' cols='50') 
+      textarea(id='description' name='description' value=artist.description rows='7' cols='50') #{artist.description}
       p
     div.submit
-      input(type='submit' value='Submit Artist')
+      form(action='' method="post")
+        input(type='submit' value='Submit Artist')

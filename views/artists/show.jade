@@ -1,7 +1,7 @@
 extends ../layout 
 
 block content 
-  if artists
+  if artist
     h1= artist.name 
     p 
     h4= artist.painting
@@ -9,6 +9,6 @@ block content
     
     p= artist.description 
     p 
-    a(href='/artists/#{artist.id}/edit') Edit 
+    a(href='/artists/'+artist.id+'/edit') Edit 
     form(action='/artists/#{artist.id}/delete' method='post')
       input(type='submit' value='Delete')
