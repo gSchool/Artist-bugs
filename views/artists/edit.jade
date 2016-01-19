@@ -25,7 +25,7 @@ block content
     div.description
       label(for='description') Description of Artwork
       p
-      textarea(id='description' name='description' value=artist.description rows='7' cols='50') 
+      textarea(id='description' name='description' rows='7' cols='50') #{artist.description}
       p
     div.submit
       input(type='submit' id='submit' name='submit' value='Submit Artist')
