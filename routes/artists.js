@@ -46,7 +46,7 @@ router.post('/artists/:id', function (req, res, next) {
 });
 
 router.post('/artists/:id/delete', function (req, res, next) {
-  var artist_id = req.params.id);
+  var artist_id = req.params.id;
   artists().where('id', artist_id).del().then(function (artist) {
     res.redirect('/artists');
   });
