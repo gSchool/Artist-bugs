@@ -23,7 +23,7 @@ router.post('/artists', function(req,res,next){
   });
 });
 
-router.get('/artists/:id', function(res,req,next){
+router.get('/artists/:id', function(req,res,next){
   var artist_id = parseInt(req.params.id);
   artists().where('id', artist_id).first().then(function(artist){
     res.render('artists/show', {artist: artist} );
